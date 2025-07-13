@@ -11,9 +11,13 @@
   },
   "dependencies": {
     "@react-native/new-app-screen": "0.80.1",
+    "@react-navigation/bottom-tabs": "^7.4.2",
+    "@react-navigation/native": "^7.1.14",
     "@supabase/supabase-js": "^2.50.5",
     "react": "19.1.0",
     "react-native": "0.80.1",
+    "react-native-safe-area-context": "^5.5.2",
+    "react-native-screens": "^4.11.1",
     "react-native-url-polyfill": "^2.0.0"
   },
   "devDependencies": {
