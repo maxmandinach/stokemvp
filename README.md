@@ -1,97 +1,88 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# StokeApp - Flashcard Learning App
 
-# Getting Started
+A React Native app for learning with flashcards, powered by Supabase.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+- ✅ Supabase integration with React Native
+- ✅ Fetch and display episodes from database
+- ✅ TypeScript support with proper type definitions
+- ✅ Error handling and loading states
+- ✅ Modern UI with clean design
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Database Schema
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+The app uses two main tables:
 
-```sh
-# Using npm
-npm start
+### Episodes Table
+- `id` (primary key)
+- `title` (string)
+- `description` (text)
+- `duration_minutes` (integer)
+- `category` (string)
+- `difficulty` (string)
 
-# OR using Yarn
-yarn start
+### Flashcards Table
+- `id` (primary key)
+- `episode_id` (foreign key to episodes)
+- `question` (text)
+- `answer` (text)
+- `difficulty` (string)
+- `order_index` (integer)
+
+## Setup
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Run the app:**
+   ```bash
+   # iOS
+   npx react-native run-ios
+   
+   # Android
+   npx react-native run-android
+   ```
+
+## Supabase Configuration
+
+The app is configured to work with React Native and Hermes engine. The Supabase client includes:
+
+- Proper headers for React Native
+- Auto-refresh token enabled
+- Session persistence enabled
+- URL detection disabled (for React Native)
+
+## Project Structure
+
+```
+src/
+├── lib/
+│   ├── supabase.ts          # Supabase client configuration
+│   ├── episodeService.ts    # Service for fetching episodes and flashcards
+│   └── types.ts            # TypeScript type definitions
 ```
 
-## Step 2: Build and run your app
+## Current Status
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+The app successfully:
+- Connects to Supabase without protocol errors
+- Fetches episodes from the database
+- Displays episode information with loading states
+- Handles errors gracefully
 
-### Android
+## Test Data
 
-```sh
-# Using npm
-npm run android
+The app expects at least one episode in the database with the following structure:
+- Title: "Test Episode: Building Better Habits"
+- Associated flashcards for the episode
 
-# OR using Yarn
-yarn android
-```
+## Next Steps
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+To extend the app, you can:
+1. Add flashcard display functionality
+2. Implement user authentication
+3. Add episode creation/editing
+4. Implement flashcard study sessions
