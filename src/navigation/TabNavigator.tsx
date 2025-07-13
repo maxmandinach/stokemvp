@@ -1,14 +1,26 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 // Import screens
 import HomeScreen from '../screens/HomeScreen';
 import ReviewScreen from '../screens/ReviewScreen';
 import LibraryScreen from '../screens/LibraryScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import FlashcardScreen from '../screens/FlashcardScreen';
 
 const Tab = createBottomTabNavigator();
+const LibraryStack = createStackNavigator();
+
+function LibraryStackNavigator() {
+  return (
+    <LibraryStack.Navigator>
+      <LibraryStack.Screen name="LibraryMain" component={LibraryScreen} options={{ title: 'Library' }} />
+      <LibraryStack.Screen name="FlashcardScreen" component={FlashcardScreen} options={{ title: 'Flashcards' }} />
+    </LibraryStack.Navigator>
+  );
+}
 
 export default function TabNavigator() {
   return (
@@ -55,7 +67,7 @@ export default function TabNavigator() {
       />
       <Tab.Screen
         name="Library"
-        component={LibraryScreen}
+        component={LibraryStackNavigator}
         options={{
           tabBarLabel: 'Library',
           tabBarIcon: ({ color, size }) => (
